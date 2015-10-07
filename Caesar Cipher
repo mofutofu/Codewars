@@ -9,7 +9,7 @@ class CaesarCipher(object):
         rtn_str = ""
         for i in list(str.upper()): # Parses through the string
             if ord(i) in range(65,91):  # Checks if it's an alphabetical letter
-                if ord(i) + self.s > 90: # If the shift goes over the ordinal number, it sends the number back to a
+                if ord(i) + self.s > 90: # If ordinal number goes above 90, it will add 26 to loop around the alphabet
                     rtn_str += chr(ord(i) + self.s - 26)
                 else:
                     rtn_str += chr(ord(i) + self.s)
@@ -20,7 +20,7 @@ class CaesarCipher(object):
         rtn_str = ""
         for i in list(str.upper()):
             if ord(i) in range(65,91):
-                if ord(i) - self.s < 65:
+                if ord(i) - self.s < 65: # If ordinal number goes below 65, it will add 26 to loop around the alphabet
                     rtn_str += chr(ord(i) - self.s + 26)
                 else:
                     rtn_str += chr(ord(i) - self.s)
