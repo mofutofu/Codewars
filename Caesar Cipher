@@ -1,0 +1,29 @@
+# This class codes and decodes Caesar Ciphers.  
+# It only returns uppercase, and ignores non-alphabetical characters, returning them as is.
+class CaesarCipher(object):
+
+    def __init__(self, shift):
+        self.s = shift
+
+    def encode(self, str):
+        rtn_str = ""
+        for i in list(str.upper()): # Parses through the string
+            if ord(i) in range(65,91):  # Checks if it's an alphabetical letter
+                if ord(i) + self.s > 90: # If the shift goes over the ordinal number, it sends the number back to a
+                    rtn_str += chr(ord(i) + self.s - 26)
+                else:
+                    rtn_str += chr(ord(i) + self.s)
+            else:
+                rtn_str += i # Does this if i is not in the alphabet
+        return rtn_str
+    def decode(self, str):
+        rtn_str = ""
+        for i in list(str.upper()):
+            if ord(i) in range(65,91):
+                if ord(i) - self.s < 65:
+                    rtn_str += chr(ord(i) - self.s + 26)
+                else:
+                    rtn_str += chr(ord(i) - self.s)
+            else:
+                rtn_str += i
+        return rtn_str
